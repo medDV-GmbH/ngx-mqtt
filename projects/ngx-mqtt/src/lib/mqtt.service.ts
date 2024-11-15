@@ -1,6 +1,10 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
-import { connect, IClientPublishOptions, IClientSubscribeOptions, ISubscriptionGrant, MqttClient } from 'mqtt';
+import { IClientPublishOptions, IClientSubscribeOptions, ISubscriptionGrant} from 'mqtt';
 import { Packet } from 'mqtt-packet';
+
+import mqtt from 'mqtt';
+const connect = mqtt.connect;
+type MqttClient = mqtt.MqttClient;
 
 import { BehaviorSubject, merge, Observable, Observer, Subject, Subscription, Unsubscribable, using } from 'rxjs';
 import { filter, publish, publishReplay, refCount } from 'rxjs/operators';
