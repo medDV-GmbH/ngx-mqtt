@@ -1,5 +1,5 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
-import { connect, IClientPublishOptions, IClientSubscribeOptions, ISubscriptionGrant, MqttClient } from 'mqtt-browser';
+import { connect, IClientPublishOptions, IClientSubscribeOptions, ISubscriptionGrant, MqttClient } from 'mqtt';
 import { Packet } from 'mqtt-packet';
 
 import { BehaviorSubject, merge, Observable, Observer, Subject, Subscription, Unsubscribable, using } from 'rxjs';
@@ -129,12 +129,12 @@ export class MqttService {
   public get onSuback(): EventEmitter<IOnSubackEvent> {
     return this._onSuback;
   }
-  
+
   /** An actual connection state **/
   public get connectionState(): MqttConnectionState {
     return this.state.value;
   }
-  
+
   /** a map of all mqtt observables by filter */
   public observables: { [filterString: string]: Observable<IMqttMessage> } = {};
   /** the connection state */
@@ -292,7 +292,7 @@ export class MqttService {
         // refcount is decreased on unsubscribe.
         () => {
           const subscription: Subscription = new Subscription();
-          this.client.subscribe(filterString, opts, (err: any, granted: ISubscriptionGrant[]) => {
+          this.client.subscribe(filterString, opts, (err: any, granted: ISubscriptionGrant[] | undefined) => {
             if (granted) { // granted can be undefined when an error occurs when the client is disconnecting
               granted.forEach((granted_: ISubscriptionGrant) => {
                 if (granted_.qos === 128) {

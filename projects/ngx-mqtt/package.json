@@ -27,8 +27,8 @@
     "@angular/core": ">=14"
   },
   "dependencies": {
-    "mqtt-browser": "4.3.7",
-    "mqtt-packet": "^6.10.0",
+    "mqtt-packet": "^9.0.1",
+    "mqtt": "^5.10.2",
     "tslib": "^2.3.0"
   },
   "sideEffects": false

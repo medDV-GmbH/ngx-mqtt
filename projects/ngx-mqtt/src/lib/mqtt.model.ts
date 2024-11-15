@@ -1,5 +1,6 @@
 import { Stream } from 'stream';
-import { MqttClient, IClientOptions, IClientPublishOptions, IPacket } from 'mqtt-browser';
+import {MqttClient, IClientOptions, IClientPublishOptions, IStream, IConnackPacket} from 'mqtt';
+import {IPacket} from "mqtt-packet";
 
 export enum MqttConnectionState {
   CLOSED,
@@ -38,7 +39,7 @@ export interface IMqttMessage extends IPacket {
 }
 
 export interface IPublishOptions extends IClientPublishOptions { }
-export interface IOnConnectEvent extends IMqttMessage { }
+export interface IOnConnectEvent extends IConnackPacket { }
 export interface IOnErrorEvent extends Error {
   type?: string;
 }
@@ -49,7 +50,7 @@ export interface IOnSubackEvent {
 }
 
 export interface IMqttClient extends MqttClient {
-  stream: Stream;
+  stream: IStream;
 }
 
 export interface IOnPacketsendEvent extends IPacket { }
