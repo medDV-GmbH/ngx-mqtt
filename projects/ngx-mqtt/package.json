@@ -1,9 +1,9 @@
 {
-  "name": "ngx-mqtt",
-  "version": "17.0.0",
+  "name": "@meddv/ngx-mqtt",
+  "version": "18.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sclausen/ngx-mqtt.git"
+    "url": "https://github.com/medDV-GmbH/ngx-mqtt"
   },
   "keywords": [
     "angular",
