@@ -29,7 +29,7 @@ export interface IMqttMessage extends IPacket {
   /** the mqtt topic to which this message was published to */
   topic: string;
   /** the payload */
-  payload: Uint8Array;
+  payload: string | Buffer;
   /** the quality of service */
   qos: number;
   /** if this message is a retained message */
